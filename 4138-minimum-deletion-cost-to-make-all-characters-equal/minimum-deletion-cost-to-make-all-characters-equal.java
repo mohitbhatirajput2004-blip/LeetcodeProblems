@@ -1,15 +1,17 @@
 class Solution {
     public long minCost(String s, int[] cost) {
-        Map<Character, Long> map =new HashMap<>();
+        long[] arr= new long[26];
+        long m=Integer.MIN_VALUE;
         long sum=0;
         for(int i=0;i<s.length();i++){
-            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),(long)0)+cost[i]);
-            sum+=cost[i];
+            arr[s.charAt(i)-'a']+=cost[i];
+        }   
+        for(long i:arr){
+            if(i>m){
+                m=i;
+            }
+            sum+=i;
         }
-        long min=Long.MAX_VALUE;
-        for(char ch:map.keySet()){
-            min=Math.min(min,sum-map.get(ch));
-        }
-        return min; 
+        return sum-m;
     }
 }
