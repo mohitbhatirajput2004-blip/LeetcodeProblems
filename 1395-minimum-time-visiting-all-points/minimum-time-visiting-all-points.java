@@ -9,24 +9,28 @@ class Solution {
            int n1 = points[i+1][0];
            int n2 = points[i+1][1];
 
-           while( s1 != n1 || s2 != n2){
 
-            if(n1 > s1){
-                s1 ++;
-            }
-             if(n1 < s1){
-                s1 --;
-            }
-             if(n2 > s2){
-                s2 ++;
-            }
-             if(n2 < s2){
-                s2 --;
-            }
-            time++;
-           }
+           time += Math.max(Math.abs(n1-s1), Math.abs(n2-s2));
+        
 
-        }
+        //    while( s1 != n1 || s2 != n2){
+
+        //     if(n1 > s1){
+        //         s1 ++;
+        //     }
+        //      if(n1 < s1){
+        //         s1 --;
+        //     }
+        //      if(n2 > s2){
+        //         s2 ++;
+        //     }
+        //      if(n2 < s2){
+        //         s2 --;
+        //     }
+        //     time++;
+        //    }
+
+         }
         return time;
     }
 }
