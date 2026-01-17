@@ -10,19 +10,19 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<>();
 
         while (a < n) {
-            int val = nums[a];
-            map.put(val, map.getOrDefault(val, 0) + 1);
-            if (map.get(val) == 1) { // first occurrence
-                sum += val;
+            
+            map.put(nums[a], map.getOrDefault(nums[a], 0) + 1);
+            if (map.get(nums[a]) == 1) { 
+                sum += nums[a];
             }
 
-            // shrink window while condition satisfied
-            while (sum >= k) {
+           
+            while ( b <= a && sum >= k) {
                 min = Math.min(min, a - b + 1);
-                int removeVal = nums[b];
-                map.put(removeVal, map.get(removeVal) - 1);
-                if (map.get(removeVal) == 0) {
-                    sum -= removeVal;
+                
+                map.put(nums[b], map.get(nums[b]) - 1);
+                if (map.get(nums[b]) == 0) {
+                    sum -= nums[b];
                 }
                 b++;
             }
