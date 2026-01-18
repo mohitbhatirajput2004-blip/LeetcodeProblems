@@ -6,7 +6,7 @@ class Solution {
         while (j < s.length()) {
             cost += Math.abs(s.charAt(j) - t.charAt(j));
 
-            while (cost > maxCost) {
+            while (i <= j && cost > maxCost) {
                 cost -= Math.abs(s.charAt(i) - t.charAt(i));
                 i++;
             }
