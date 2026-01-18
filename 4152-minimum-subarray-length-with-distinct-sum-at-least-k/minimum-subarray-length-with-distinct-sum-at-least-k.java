@@ -2,21 +2,20 @@ import java.util.*;
 
 class Solution {
     public int minLength(int[] nums, int k) {
-        int a = 0;              // right pointer
-        int b = 0;              // left pointer
-        int sum = 0;            // distinct sum
+        int a = 0;              
+        int b = 0;              
+        int sum = 0;       
         int n = nums.length;
         int min = Integer.MAX_VALUE;
         Map<Integer, Integer> map = new HashMap<>();
 
-        while (a < n) {
-            
+        while (a < n) { 
             map.put(nums[a], map.getOrDefault(nums[a], 0) + 1);
+
             if (map.get(nums[a]) == 1) { 
                 sum += nums[a];
             }
 
-           
             while ( b <= a && sum >= k) {
                 min = Math.min(min, a - b + 1);
                 
