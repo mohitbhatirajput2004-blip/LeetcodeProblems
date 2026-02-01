@@ -6,18 +6,19 @@ class Solution {
         PriorityQueue<double[]> pq = new PriorityQueue<>((a, b) -> Double.compare(b[0], a[0]));
 
         for (int[] c : classes) {
-            double avg = check(c[0], c[1]);
+            double avg = ((double)(c[0] + 1) / (c[1] + 1)) - ((double) c[0] / c[1]);
             pq.add(new double[]{avg, c[0], c[1]});
         }
 
-        while (extraStudents-- > 0) {
-            double[] top = pq.poll();
-            int pass = (int) top[1];
-            int total = (int) top[2];
-            pass++;
-            total++;
-            double navg = check(pass, total);
-            pq.add(new double[]{navg, pass, total});
+        while (extraStudents > 0) {
+            double[] c = pq.poll();
+            int p =  (int)c[1];
+            int t =  (int)c[2];
+            p++;
+            t++;
+            double navg = ((double)(p + 1) / (t + 1)) - ((double) p / t);
+            pq.add(new double[]{navg, p, t});
+            extraStudents--;
         }
 
         double sum = 0.0;
@@ -28,8 +29,5 @@ class Solution {
         return sum / classes.length;
     }
 
-    double check(int pass, int total) {
-        double ans = ((double)(pass + 1) / (total + 1)) - ((double) pass / total);
-        return ans;
-    }
+   
 }
